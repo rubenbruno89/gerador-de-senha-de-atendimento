@@ -1,0 +1,97 @@
+<html><head><base href="https://websim-generator.com/senha-atendimento/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Senhas de Atendimento</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  .controls {
+    margin-bottom: 20px;
+  }
+  label, input, button {
+    margin: 5px;
+    font-size: 16px;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .senhas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .senha {
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+  }
+  @media print {
+    .controls {
+      display: none;
+    }
+    .container {
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Senhas de Atendimento</h1>
+    <div class="controls">
+      <label for="quantidade">Quantidade de senhas:</label>
+      <input type="number" id="quantidade" min="1" max="100" value="10">
+      <button onclick="gerarSenhas()">Gerar Senhas</button>
+      <button onclick="window.print()">Imprimir</button>
+    </div>
+    <div id="senhas" class="senhas"></div>
+  </div>
+
+  <script>
+    function gerarSenhas() {
+      const quantidade = document.getElementById('quantidade').value;
+      const senhasContainer = document.getElementById('senhas');
+      senhasContainer.innerHTML = '';
+
+      for (let i = 1; i <= quantidade; i++) {
+        const senha = document.createElement('div');
+        senha.className = 'senha';
+        senha.textContent = `A${String(i).padStart(3, '0')}`;
+        senhasContainer.appendChild(senha);
+      }
+    }
+
+    // Gerar senhas iniciais
+    gerarSenhas();
+  </script>
+</body>
+</html>
